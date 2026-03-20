@@ -178,5 +178,7 @@ The hosted page provides buttons for:
 ## License
 This project uses the MIT License (`LICENSE`).
 
-## Author
-- Your Name (@your-github)
+## Group Members
+- Nkrumah Caleb Joel
+- Henry Boateng
+- Samuel Arko-Mensah

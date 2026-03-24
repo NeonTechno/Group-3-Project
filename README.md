@@ -34,6 +34,13 @@ A built-in Wi-Fi AP mode hosts a tiny web controller with movement and mode butt
 - More stable line reacquisition at branch-like divergence.
 - Improved curve tracking due to differential confidence comparison.
 
+## Design considerations
+- Originally planned to use dedicated reflectance/line-tracking arrays (e.g., QTR/TCRT) for higher sampling rates and simpler thresholding.
+- Due to part availability and schedule constraints, we repurposed TCS34725 color sensors. We compensated with dual I2C buses, a calibrated reflectance ratio, and tunable thresholds/steering bands.
+- Trade-offs include slightly lower effective sampling rate and higher sensitivity to ambient light; mitigations include filtering, conservative steering bands, and a recovery search behavior.
+- Decision rationale: deliver a reliable, demo-ready system with available components while preserving a clean abstraction boundary for later sensor upgrades.
+- Migration path: the architecture isolates sensor reading/conversion logic; swapping to dedicated line sensors would primarily affect `lib/tcs34725.py` and tuning in `config.py`, leaving motor control and higher-level behaviors unchanged.
+
 ## Hardware components
 - ESP32 development board (MicroPython firmware)
 - 2 x TCS34725 RGB color sensors
